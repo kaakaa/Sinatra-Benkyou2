@@ -1,0 +1,27 @@
+!!!XML
+!!!
+%html
+  %head
+    %title 
+      Haml Sample
+    %meta{ :charset => "utf-8" }
+    %script{ :src => "/js/jquery-1.9.0.min.js" }
+    %link{ :rel => "stylesheet", :href => "/css/bootstrap.css" }
+  %body
+    %h2
+      INPUT YOUT NAME!
+      %form{ :method => "post", :action => "hello" }
+        %input{ :type => "text", :name => "name", :class => "span2" }
+        %input{ :type => "submit", :value => "SEND", :class => "btn btn-small" }
+    %h2
+      = "Hello " + @display_name.to_s + " !"
+    %hr
+    %h3
+      HISTORY
+    -@histories.each do |history|
+      %div
+        = history.date_time
+        = history.name
+    %form{ :method => "post", :action => "delete" }
+      %input{ :type => "hidden", :name =>"_method", :value => "delete" }
+      %input{ :type => "submit", :value => "DELETE", :class => "btn btn-danger btn-small" }
